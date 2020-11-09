@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   def new
       @letters = []
       10.times { @letters << ("A".."Z").to_a[rand(26)] }
+      session[:scores] = [] unless session[:scores]
   end
 
   def score
@@ -15,5 +16,10 @@ class GamesController < ApplicationController
     raw_data = open("https://wagon-dictionary.herokuapp.com/#{@word}").read
     json_data = JSON.parse(raw_data)
     @word_is_real = json_data["found"]
+    if (@word_in_grid && @word_is_real)
+      session[:scores] << @word.length ** 2
+    else
+      session[:scores] << 0
+    end
   end
 end

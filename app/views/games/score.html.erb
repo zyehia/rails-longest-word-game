@@ -1,3 +1,5 @@
+<h1> Result </h1>
+
 <% unless @word_in_grid %>
   <p class="error"> Sorry, but <strong><%= @word %></strong> cannot be built out of <%= @letters.join(", ") %> </p>
 <% end %>
@@ -9,6 +11,26 @@
 <% if @word_in_grid && @word_is_real %>
   <p>Congraulations! <strong><%= @word %></strong> is a valid word, and is in <%= @letters %></p>
 <% end %>
+
+<h1>Total Score</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% session[:scores].each_with_index do |score, index| %>
+      <tr>
+        <td>Game <%= index + 1 %></td>
+        <td><%= score %> points</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p><strong>Total: </strong><%= session[:scores].sum %></p>
+
 
 <%= link_to "Play again", new_path %>
 

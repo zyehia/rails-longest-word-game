@@ -11,7 +11,7 @@
 <form method="post" action="/score">
   <div class="form-group">
     <label for="word">Please enter the longest word you can find</label>
-    <input class="form-control" type="text" name="word" id="word">
+    <input class="form-control" type="text" name="word" id="word" required>
   </div>
   <input class="btn btn-primary" type="submit" value="Submit">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
