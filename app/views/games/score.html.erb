@@ -1,3 +1,14 @@
 <% unless @word_in_grid %>
-  <p> Sorry but "<%= @word %>" cannot be built out of <%= @letters.join(", ") %> </p>
+  <p class="error"> Sorry, but <strong><%= @word %></strong> cannot be built out of <%= @letters.join(", ") %> </p>
 <% end %>
+
+<% unless @word_is_real %>
+  <p class="error"> Sorry, but <strong><%= @word %></strong> does not appear to be a real English word </p>
+<% end %>
+
+<% if @word_in_grid && @word_is_real %>
+  <p>Congraulations! <strong><%= @word %></strong> is a valid word, and is in <%= @letters %></p>
+<% end %>
+
+<%= link_to "Play again", new_path %>
+
