@@ -6,9 +6,7 @@ class GamesController < ApplicationController
 
   def score
     @letters = params[:letters].split(" ")
-    p @letters
     @word = params[:word]
-    p @word
-    @error = !@word.split("").all? {|letter| @letters.include? letter.upcase }
+    @word_in_grid = @word.split("").all? {|letter| @letters.include? letter.upcase }
   end
 end
