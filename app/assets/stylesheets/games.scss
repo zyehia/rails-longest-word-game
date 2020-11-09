@@ -25,3 +25,13 @@ $white: #EFF1F3;
   border-radius: 3px;
 }
 
+input.form-control.no-border {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+
+input.btn.no-border {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
